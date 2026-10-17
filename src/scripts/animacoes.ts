@@ -74,7 +74,8 @@ function hero() {
   );
 
   if (placa && corpo) {
-    tl.fromTo(placa, { opacity: 0 }, { opacity: 1, duration: 1.2, ease: 'power2.out' }, 0.35)
+    tl.fromTo('.hero__raios', { opacity: 0 }, { opacity: 1, duration: 3, ease: 'power1.inOut' }, 0.2)
+      .fromTo(placa, { opacity: 0 }, { opacity: 1, duration: 1.2, ease: 'power2.out' }, 0.35)
       .fromTo(
         $('.placa__folha', placa),
         { filter: 'brightness(0)' },
