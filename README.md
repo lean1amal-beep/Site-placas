@@ -17,7 +17,7 @@ npm run dev
 
 ## Publicar
 
-Importar o repositório na Vercel (framework Astro detectado sozinho, sem variáveis de ambiente).
+No ar em https://site-placas.vercel.app (deploy automático pela Vercel a cada push na main).
 
 Para medir de onde vem cada visita, mande o link com UTM, por exemplo
 `/clinicas?utm_source=prospeccao&utm_content=clinicas`, e ligue o Web Analytics no painel da Vercel.
