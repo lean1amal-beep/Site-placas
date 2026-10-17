@@ -1,0 +1,24 @@
+---
+// Logo: a placa em L vista de lado, com a faixa colorida da própria placa e o sinal do NFC.
+// Sem o G do Google de propósito (marca registrada; evita parecer produto oficial).
+interface Props {
+  tamanho?: number;
+}
+const { tamanho = 26 } = Astro.props;
+---
+
+<svg class="logo" width={tamanho} height={tamanho} viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="logo-arco" x1="0" x2="1">
+      <stop offset="0" stop-color="#EA4335"></stop>
+      <stop offset=".33" stop-color="#FBBC05"></stop>
+      <stop offset=".66" stop-color="#34A853"></stop>
+      <stop offset="1" stop-color="#4285F4"></stop>
+    </linearGradient>
+  </defs>
+  <path d="M9.5 3.5 L23.5 5.2 L22.2 25.2 L8.2 25.9 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+  <path d="M8.2 25.9 L22.2 25.2 L26 27.6 L12.2 28.4 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+  <path d="M11.2 6.6 L21.9 7.9" stroke="url(#logo-arco)" stroke-width="2" stroke-linecap="round"></path>
+  <path d="M12 14.6 a6.4 6.4 0 0 1 9 .4 M13.6 17.2 a3.6 3.6 0 0 1 5.6 .2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+  <circle cx="16.3" cy="19.8" r="1.2" fill="currentColor"></circle>
+</svg>

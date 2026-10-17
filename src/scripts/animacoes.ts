@@ -40,7 +40,6 @@ export function iniciar() {
   problema();
   cena();
   revelacoes();
-  final();
 
   // Fontes e imagens mudam alturas: recalcula os gatilhos quando tudo carregar
   window.addEventListener('load', () => ScrollTrigger.refresh());
@@ -273,24 +272,6 @@ function revelacoes() {
       },
     );
   }
-}
-
-/* CTA final: estrelas acendem em sequência */
-function final() {
-  const estrelas = $$('.final__estrelas svg');
-  if (!estrelas.length) return;
-  gsap.fromTo(
-    estrelas,
-    { opacity: 0.15, scale: 0.6 },
-    {
-      opacity: 1,
-      scale: 1,
-      duration: 0.6,
-      ease: 'back.out(3)',
-      stagger: 0.12,
-      scrollTrigger: { trigger: '.final__estrelas', start: 'top 85%', once: true },
-    },
-  );
 }
 
 /* Preços: escolhe a quantidade e vê preço por placa, total e frete */

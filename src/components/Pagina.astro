@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Placa from './Placa.astro';
 import Celular from './Celular.astro';
+import Logo from './Logo.astro';
 import {
   MARCA,
   WHATSAPP_EXIBICAO,
@@ -23,6 +24,7 @@ const palavras = (t: string) => t.split(' ');
 <Base title={c.seo.title} description={c.seo.description}>
   <header class="nav">
     <a class="nav__marca" href="#topo" aria-label={MARCA}>
+      <Logo />
       <span>Placa de Avaliação</span>
     </a>
     <a class="botao botao--mini" href={wa} target="_blank" rel="noopener">
@@ -267,11 +269,6 @@ const palavras = (t: string) => t.split(' ');
     <section class="final" aria-labelledby="final-titulo">
       <div class="final__aura" aria-hidden="true"></div>
       <div class="largura largura--texto">
-        <div class="final__estrelas surge-scroll" aria-hidden="true">
-          {Array.from({ length: 5 }, () => (
-            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.1l-5.7 3.2 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>
-          ))}
-        </div>
         <h2 id="final-titulo" class="titulo-grande surge-scroll">Seus próximos clientes vão ler o Google antes de te conhecer.</h2>
         <p class="final__texto surge-scroll">Faça com que eles saibam o que seus clientes pensam do seu estabelecimento.</p>
         <div class="surge-scroll">

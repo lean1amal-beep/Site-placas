@@ -1548,19 +1548,6 @@ summary:focus-visible {
   opacity: 0.7;
 }
 
-.final__estrelas {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
-.final__estrelas svg {
-  width: 28px;
-  height: 28px;
-  fill: var(--amarelo);
-}
-
 .final__texto {
   margin: 28px auto 40px;
   max-width: 30em;
