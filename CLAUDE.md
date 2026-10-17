@@ -17,4 +17,4 @@
 - Hero sem os raios de luz (Leandro não gostou). (17/10)
 - Barra do topo sem a estrelinha amarela: só o nome "Placa de Avaliação". (17/10)
 - Sem estrelas decorativas (topo, ícone da aba e chamada final). Só ficam as estrelas que fazem parte da placa e da avaliação na animação. (17/10)
-- Logo: placa em L vista de lado, com a faixa colorida no topo e o sinal do NFC (`src/components/Logo.astro` e `public/favicon.svg`). Sem o G do Google de propósito, pelo risco de marca. Alternativa B (G branco simples) foi mostrada ao Leandro. (17/10)
+- Logo: placa em L vista de lado com um G branco simples no meio (versão B, escolhida pelo Leandro; ele foi avisado do risco de marca e preferiu essa). Arquivos `src/components/Logo.astro` e `public/favicon.svg`. (17/10)
