@@ -390,7 +390,7 @@ summary:focus-visible {
 .placa__arte {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .placa__brilho {
@@ -466,20 +466,24 @@ summary:focus-visible {
   position: absolute;
   top: 53.6%;
   height: 20.2%;
-  border-radius: 9%;
+  border-radius: 12%;
   opacity: 0;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 0 24px 4px rgba(140, 180, 255, 0.55);
+  /* só um brilho suave em volta do quadrado da arte, sem contorno por cima */
+  box-shadow: 0 0 22px 6px rgba(140, 180, 255, 0.45), 0 0 60px 14px rgba(120, 170, 255, 0.2);
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 
 .placa__alvo--qr {
   left: 16%;
-  width: 30.3%;
+  width: 30.24%;
+  height: 20.16%;
 }
 
 .placa__alvo--nfc {
-  left: 53%;
-  width: 31.4%;
+  left: 53.09%;
+  width: 31.35%;
+  height: 20.9%;
 }
 
 /* ============ PROBLEMA ============ */
