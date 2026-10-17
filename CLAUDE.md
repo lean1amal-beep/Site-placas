@@ -1,0 +1,14 @@
+# Placa de Avaliação para o Google: regras do projeto
+
+- Responder ao Leandro em português do Brasil, simples e direto.
+- **Mobile first, sempre.** O celular tem prioridade em tudo: desenhar e testar primeiro em ~390px, depois adaptar para o computador. A maioria das visitas vem de link aberto no celular.
+- Nunca usar travessão (em dash) em nenhum texto, nem na copy.
+- Visual premium, "bem Apple": preto, muito respiro, cor só no G, nas estrelas e nas faixas.
+- Não citar a Clintia. Não afirmar afiliação com o Google. Não inventar números ou depoimentos.
+- Página /clinicas: nunca usar "clínica popular"; nada de promessa de resultado (CFM/CRO).
+
+## Decisões
+- Headline da principal: opção b, "Seu cliente aproxima o celular. A avaliação no Google abre na hora." (17/10)
+- Preços por placa: 1 a 2 R$ 100 · 3 a 4 R$ 90 · 5 a 9 R$ 85 · 10+ R$ 80 com frete grátis (17/10)
+- QR da arte no site abre o WhatsApp de pedido.
+- Fotos: editoriais de fundo preto no produto e formatos; placas recortadas (sem fundo) nos modelos; fotos reais aproximadas na faixa "Já em uso".
