@@ -134,7 +134,8 @@ function hero() {
     0.9,
   );
 
-  gsap.to('.hero__texto', {
+  // No celular o texto não esmaece ao rolar: o botão ficava cinza e parecia desativado
+  if (matchMedia('(min-width: 901px)').matches) gsap.to('.hero__texto', {
     yPercent: -18,
     opacity: 0,
     ease: 'none',
