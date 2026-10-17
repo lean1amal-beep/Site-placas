@@ -208,21 +208,6 @@ summary:focus-visible {
   text-decoration: none;
 }
 
-.nav__selo {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: #fff;
-}
-
-.nav__selo svg {
-  width: 17px;
-  height: 17px;
-  fill: var(--amarelo);
-}
-
 /* ============ HERO ============ */
 .hero {
   position: relative;

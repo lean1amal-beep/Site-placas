@@ -15,3 +15,4 @@
 - Seção "O problema" da principal com a copy do Leandro ("Pedir novas avaliações é sempre complicado."). (17/10)
 - Deixar claro que o celular precisa estar desbloqueado: passo 1 "Desbloqueia e aproxima.", pergunta no FAQ e o celular da animação começa na tela inicial, não na tela de bloqueio. (17/10)
 - Hero sem os raios de luz (Leandro não gostou). (17/10)
+- Barra do topo sem a estrelinha amarela: só o nome "Placa de Avaliação". (17/10)
