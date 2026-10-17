@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Página não encontrada" description="Essa página não existe.">
+  <main class="erro">
+    <h1 class="titulo-medio">Essa página não existe.</h1>
+    <a class="botao botao--grande" href="/">Voltar para o início</a>
+  </main>
+</Base>
+
+<style>
+  .erro {
+    min-height: 100svh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 28px;
+    padding-inline: var(--gutter);
+    text-align: center;
+  }
+</style>

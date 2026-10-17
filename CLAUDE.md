@@ -19,3 +19,9 @@
 - Sem estrelas decorativas (topo, ícone da aba e chamada final). Só ficam as estrelas que fazem parte da placa e da avaliação na animação. (17/10)
 - Logo: placa em L vista de lado com um G branco simples no meio (versão B, escolhida pelo Leandro; ele foi avisado do risco de marca e preferiu essa). Arquivos `src/components/Logo.astro` e `public/favicon.svg`. (17/10)
 - Cena do "Como funciona" com a dica "Deslize para baixo" (com setinha animada) até a avaliação ser publicada. (17/10)
+
+## Segurança (checklist revisado em 17/10)
+O site é estático: sem login, sem banco, sem formulário, sem chave de API. Cuidados que ficam valendo:
+- `vercel.json` manda os cabeçalhos de segurança (CSP só com arquivos do próprio site, sem iframe, sem script embutido). Não usar `<script>` inline nem `<style>` inline em HTML: a CSP bloqueia. Script que precisa rodar cedo vai em `public/` (ex.: `public/inicio.js`).
+- Nunca colocar senha, token ou chave no código. Repositório é público.
+- **Calculadora de frete (Melhor Envio), quando entrar:** chave só como variável de ambiente na Vercel; chamada feita por uma rota de servidor (`/api/frete`), nunca do navegador; validar no servidor que o CEP tem 8 dígitos e a quantidade é de 1 a 50; limite de tentativas por IP; resposta de erro genérica ("Não foi possível calcular o frete agora") sem detalhes técnicos; liberar o domínio da rota no `connect-src` da CSP só se precisar.

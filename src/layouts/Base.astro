@@ -33,11 +33,8 @@ const og = new URL('/img/og.jpg', Astro.site ?? Astro.url).href;
     <meta property="og:description" content={description} />
     <meta property="og:image" content={og} />
     <meta name="twitter:card" content="summary_large_image" />
-    <script is:inline>
-      document.documentElement.classList.add('js');
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches)
-        document.documentElement.classList.add('rm');
-    </script>
+    <!-- arquivo próprio (não inline) para a política de segurança bloquear qualquer script embutido -->
+    <script is:inline src="/inicio.js"></script>
   </head>
   <body>
     <slot />
