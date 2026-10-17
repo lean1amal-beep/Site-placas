@@ -312,51 +312,6 @@ summary:focus-visible {
   min-height: 560px;
 }
 
-/* Raios de luz caindo sobre a placa (refs: Light Rays do spell.sh, feito em CSS) */
-.hero__raios {
-  position: absolute;
-  left: 50%;
-  top: -42%;
-  width: 260%;
-  height: 165%;
-  translate: -50% 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  -webkit-mask:
-    conic-gradient(from 152deg at 50% 0%, #000 0deg 56deg, transparent 56deg),
-    radial-gradient(ellipse 34% 78% at 50% 0%, #000 25%, transparent 80%);
-  -webkit-mask-composite: source-in;
-  mask:
-    conic-gradient(from 152deg at 50% 0%, #000 0deg 56deg, transparent 56deg),
-    radial-gradient(ellipse 34% 78% at 50% 0%, #000 25%, transparent 80%);
-  mask-composite: intersect;
-}
-
-.hero__raios i {
-  position: absolute;
-  inset: 0;
-  transform-origin: 50% 0;
-  filter: blur(5px);
-  background: repeating-conic-gradient(from 0deg at 50% 0%, transparent 0deg, rgba(170, 200, 255, 0.2) 0.9deg, transparent 2.6deg, transparent 4.9deg);
-  animation: raios 9s ease-in-out infinite alternate;
-}
-
-.hero__raios i:nth-child(2) {
-  background: repeating-conic-gradient(from 1.7deg at 50% 0%, transparent 0deg, rgba(255, 255, 255, 0.14) 0.6deg, transparent 1.9deg, transparent 7.3deg);
-  animation-duration: 13s;
-  animation-direction: alternate-reverse;
-}
-
-@keyframes raios {
-  0% { transform: rotate(-2.5deg); opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { transform: rotate(2.5deg); opacity: 0.75; }
-}
-
-.js:not(.rm) .hero__raios {
-  opacity: 0;
-}
-
 .hero__placa-wrap {
   position: relative;
   z-index: 1;
