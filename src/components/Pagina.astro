@@ -118,19 +118,16 @@ const palavras = (t: string) => t.split(' ');
         <h2 id="produto-titulo" class="titulo-grande surge-scroll">Feita pra ficar no balcão por muito tempo.</h2>
 
         <div class="bento">
-          <figure class="bento__foto bento__foto--alta surge-scroll">
-            <img src="/img/hero-onfit-fundo-escuro.webp" alt="Placa da OnFit, preta com faixas verdes, em acrílico sobre fundo escuro" loading="lazy" width="1376" height="768" />
+          <figure class="bento__foto surge-scroll">
+            <img src="/img/hero-placa-preta-fundo-escuro.webp" alt="Placa preta no modelo padrão, em acrílico sobre fundo escuro" loading="lazy" width="1376" height="768" />
           </figure>
           {detalhes.map((d, i) => (
-            <article class:list={['cartao surge-scroll', { 'cartao--largo': i === 2 }]}>
+            <article class="cartao surge-scroll">
               <span class="cartao__n">{String(i + 1).padStart(2, '0')}</span>
               <h3>{d.titulo}</h3>
               <p>{d.texto}</p>
             </article>
           ))}
-          <figure class="bento__foto surge-scroll">
-            <img src="/img/hero-placa-preta-fundo-escuro.webp" alt="Placa preta no modelo padrão, em acrílico sobre fundo escuro" loading="lazy" width="1376" height="768" />
-          </figure>
         </div>
 
         <h3 class="subtitulo surge-scroll">Dois formatos.</h3>

@@ -1046,20 +1046,18 @@ summary:focus-visible {
   min-height: 220px;
 }
 
+.bento__foto {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
 .bento__foto img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 72% 50%;
+  object-position: 76% 50%;
 }
 
-.bento__foto--alta img {
-  object-position: 70% 50%;
-}
-
-.bento__foto--alta {
-  grid-row: span 2;
-}
 
 .formatos {
   display: grid;
@@ -1857,13 +1855,12 @@ summary:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .bento__foto--alta {
-    grid-row: span 1;
-    grid-column: span 2;
-    aspect-ratio: 4 / 3;
+  .bento__foto {
+    grid-row: auto;
+    aspect-ratio: 16 / 10;
   }
 
-  .cartao--largo {
+  .bento .cartao:last-child {
     grid-column: span 2;
   }
 
@@ -1889,8 +1886,8 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .bento__foto--alta,
-  .cartao--largo {
+  .bento__foto,
+  .bento .cartao:last-child {
     grid-column: auto;
   }
 
@@ -1965,9 +1962,4 @@ summary:focus-visible {
     padding-inline: 20px;
     white-space: nowrap;
   }
-}
-
-.bento__foto:not(.bento__foto--alta) img {
-  transform: scale(1.4);
-  transform-origin: 74% 55%;
 }
