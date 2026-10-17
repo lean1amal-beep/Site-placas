@@ -14,6 +14,8 @@ export type Conteudo = {
   seo: { title: string; description: string };
   mensagemWhatsApp: string;
   hero: { headline: string; sub: string; cta: string };
+  // quem avalia: "cliente" na principal, "paciente" na de clínicas
+  quem: 'cliente' | 'paciente';
   problema: { titulo: string; texto: string; fecho: string };
   saude?: { titulo: string; itens: { titulo: string; texto: string }[] };
   faq: Pergunta[];
@@ -60,6 +62,7 @@ export const principal: Conteudo = {
     description:
       'Placa personalizada com NFC e QR code que leva seu cliente direto à avaliação no Google. R$ 100, pronta em 10 dias úteis, envio para todo o Brasil.',
   },
+  quem: 'cliente',
   mensagemWhatsApp: 'Olá, vi a página da placa de avaliação e quero fazer a minha.',
   hero: {
     headline: 'Seu cliente aproxima o celular. A avaliação no Google abre na hora.',
@@ -82,6 +85,7 @@ export const clinicas: Conteudo = {
     description:
       'Placa com NFC e QR code para a recepção da sua clínica. O paciente avalia no Google em segundos. R$ 100, envio para todo o Brasil.',
   },
+  quem: 'paciente',
   mensagemWhatsApp: 'Olá, tenho uma clínica e quero a placa de avaliação pra recepção.',
   hero: {
     headline: 'A placa que transforma a recepção da sua clínica em avaliações no Google.',
@@ -93,7 +97,7 @@ export const clinicas: Conteudo = {
     texto:
       'Antes de marcar, o paciente pesquisa, compara as notas e lê o que outros pacientes escreveram. O problema é que quem foi bem atendido raramente lembra de avaliar. A recepção está ocupada demais pra pedir, e o perfil fica com poucas avaliações mesmo com a agenda cheia.',
     fecho:
-      'Com a placa na recepção, o paciente avalia em segundos, apenas encostando o celular.',
+      'Essa tecnologia resolve esse problema: o paciente faz a avaliação de forma rápida, apenas encostando o celular na área indicada, e já cai automaticamente na avaliação aberta, precisando somente avaliar o atendimento.',
   },
   saude: {
     titulo: 'Feita pra ambiente de saúde.',
@@ -129,12 +133,12 @@ export const clinicas: Conteudo = {
   ],
 };
 
-export const passos = [
+export const passos = (quem: Conteudo['quem']) => [
   {
     n: '01',
     titulo: 'Desbloqueia e aproxima.',
     texto:
-      'Com o celular desbloqueado, o cliente encosta na área do NFC ou aponta a câmera pro QR code.',
+      `Com o celular desbloqueado, o ${quem} encosta na área do NFC ou aponta a câmera pro QR code.`,
   },
   {
     n: '02',

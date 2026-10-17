@@ -76,11 +76,11 @@ const palavras = (t: string) => t.split(' ');
     <section id="como-funciona" class="cena" aria-labelledby="cena-titulo">
       <div class="cena__fixo">
         <h2 id="cena-titulo" class="cena__titulo">
-          Três segundos entre o cliente e a sua avaliação.
+          Três segundos entre o {c.quem} e a sua avaliação.
         </h2>
         <div class="cena__grade">
           <ol class="cena__passos">
-            {passos.map((p, i) => (
+            {passos(c.quem).map((p, i) => (
               <li class="passo" data-passo={i}>
                 <span class="passo__n">{p.n}</span>
                 <h3 class="passo__titulo">{p.titulo}</h3>
