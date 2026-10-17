@@ -173,7 +173,7 @@ function cena() {
   const alvoQr = $('.placa__alvo--qr', secao);
   const alvoNfc = $('.placa__alvo--nfc', secao);
   const cel = $('.cena__cel', secao);
-  const bloqueio = $('.cel__bloqueio', secao);
+  const bloqueio = $('.cel__inicio', secao);
   const aviso = $('.cel__aviso', secao);
   const folha = $('.cel__folha', secao);
   const estrelas = $$('.cel__estrela', secao);

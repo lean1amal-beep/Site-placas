@@ -771,26 +771,51 @@ summary:focus-visible {
   background: #000;
 }
 
-.cel__bloqueio {
+.cel__inicio {
   position: absolute;
-  inset: 13% 0 auto;
-  text-align: center;
+  inset: 0;
+  padding: 3.4cqi 7cqi 6cqi;
+  display: flex;
+  flex-direction: column;
 }
 
 .cel__hora {
-  display: block;
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 22cqi;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  font-size: 5.2cqi;
+  padding-left: 3cqi;
 }
 
-.cel__data {
-  display: block;
-  margin-top: 3cqi;
-  font-size: 5.4cqi;
-  color: rgba(255, 255, 255, 0.75);
+/* Tela inicial desbloqueada: o NFC só abre o link com o celular desbloqueado */
+.cel__apps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6cqi 5cqi;
+  margin-top: 16cqi;
+}
+
+.cel__apps i,
+.cel__dock i {
+  aspect-ratio: 1;
+  border-radius: 28%;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.07));
+}
+
+.cel__apps i:nth-child(3n + 1) {
+  background: linear-gradient(150deg, rgba(120, 165, 255, 0.55), rgba(66, 133, 244, 0.25));
+}
+
+.cel__apps i:nth-child(5n + 2) {
+  background: linear-gradient(150deg, rgba(126, 226, 160, 0.5), rgba(52, 168, 83, 0.22));
+}
+
+.cel__dock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5cqi;
+  margin-top: auto;
+  padding: 3.5cqi;
+  border-radius: 9cqi;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .cel__aviso {
@@ -1706,7 +1731,7 @@ summary:focus-visible {
   transform: translate(10%, 5%) rotate(-8deg) translateZ(60px);
 }
 
-.rm .cel__bloqueio {
+.rm .cel__inicio {
   opacity: 0;
 }
 
@@ -1801,9 +1826,9 @@ summary:focus-visible {
     font-size: 16px;
   }
 
+  /* no celular a nota do QR fica só no FAQ, pra caber na cena */
   .passo__nota {
-    margin-top: 10px;
-    font-size: 13px;
+    display: none;
   }
 
   .bento {

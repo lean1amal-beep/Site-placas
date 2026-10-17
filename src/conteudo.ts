@@ -29,6 +29,10 @@ const faqBase: Pergunta[] = [
     r: 'Não. A câmera do celular e o NFC já vêm no aparelho.',
   },
   {
+    p: 'O celular precisa estar desbloqueado?',
+    r: 'Sim. Por segurança, o celular só abre o link do NFC com a tela desbloqueada. É só desbloquear e encostar na área indicada.',
+  },
+  {
     p: 'E se o celular não tiver NFC?',
     r: 'Ele usa o QR code. As duas opções estão na mesma placa.',
   },
@@ -63,11 +67,11 @@ export const principal: Conteudo = {
     cta: 'Quero minha placa',
   },
   problema: {
-    titulo: 'Cliente satisfeito vai embora sem deixar avaliação.',
+    titulo: 'Pedir novas avaliações é sempre complicado.',
     texto:
-      'Quem gostou do atendimento agradece, sorri e vai embora. Quem não teve um atendimento tão legal abre o Google e escreve. Pedir "deixa uma avaliação pra gente" não resolve: a pessoa até quer, mas precisa achar o perfil, abrir o comentário, e nesse meio tempo pode acabar se perdendo.',
+      'Abrir o celular, pesquisar o perfil no Google, abrir os comentários e só aí chegar na parte certa. Tudo isso demanda tempo e, muitas vezes, o cliente desiste de avaliar.',
     fecho:
-      'Essa tecnologia resolve esse problema: o cliente faz a avaliação de forma rápida, apenas encostando o celular.',
+      'Essa tecnologia resolve esse problema: o cliente faz a avaliação de forma rápida, apenas encostando o celular na área indicada, e já cai automaticamente na avaliação aberta, precisando somente avaliar o serviço.',
   },
   faq: faqBase,
 };
@@ -128,8 +132,9 @@ export const clinicas: Conteudo = {
 export const passos = [
   {
     n: '01',
-    titulo: 'Aproxima ou aponta.',
-    texto: 'O cliente encosta o celular no NFC ou aponta a câmera pro QR code.',
+    titulo: 'Desbloqueia e aproxima.',
+    texto:
+      'Com o celular desbloqueado, o cliente encosta na área do NFC ou aponta a câmera pro QR code.',
   },
   {
     n: '02',

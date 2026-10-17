@@ -12,3 +12,6 @@
 - Preços por placa: 1 a 2 R$ 100 · 3 a 4 R$ 90 · 5 a 9 R$ 85 · 10+ R$ 80 com frete grátis (17/10)
 - QR da arte no site abre o WhatsApp de pedido.
 - Fotos: editoriais de fundo preto no produto e formatos; placas recortadas (sem fundo) nos modelos; fotos reais aproximadas na faixa "Já em uso".
+- Seção "O problema" da principal com a copy do Leandro ("Pedir novas avaliações é sempre complicado."). (17/10)
+- Deixar claro que o celular precisa estar desbloqueado: passo 1 "Desbloqueia e aproxima.", pergunta no FAQ e o celular da animação começa na tela inicial, não na tela de bloqueio. (17/10)
+- Hero sem os raios de luz (Leandro não gostou). (17/10)
