@@ -18,3 +18,4 @@
 - Barra do topo sem a estrelinha amarela: só o nome "Placa de Avaliação". (17/10)
 - Sem estrelas decorativas (topo, ícone da aba e chamada final). Só ficam as estrelas que fazem parte da placa e da avaliação na animação. (17/10)
 - Logo: placa em L vista de lado com um G branco simples no meio (versão B, escolhida pelo Leandro; ele foi avisado do risco de marca e preferiu essa). Arquivos `src/components/Logo.astro` e `public/favicon.svg`. (17/10)
+- Cena do "Como funciona" com a dica "Deslize para baixo" (com setinha animada) até a avaliação ser publicada. (17/10)

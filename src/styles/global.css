@@ -686,6 +686,44 @@ summary:focus-visible {
   will-change: transform, opacity;
 }
 
+/* Dica "Deslize para baixo" enquanto a cena está presa */
+.cena__dica {
+  position: absolute;
+  left: 50%;
+  bottom: 44px;
+  translate: -50% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--texto-2);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.cena__dica span {
+  width: 9px;
+  height: 9px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  rotate: 45deg;
+  animation: dica 1.6s ease-in-out infinite;
+}
+
+@keyframes dica {
+  0%, 100% { translate: 0 -2px; opacity: 0.5; }
+  50% { translate: 0 3px; opacity: 1; }
+}
+
+.cena--fim .cena__dica,
+.rm .cena__dica {
+  opacity: 0;
+}
+
 .cena__progresso {
   position: absolute;
   left: 50%;
@@ -1755,7 +1793,7 @@ summary:focus-visible {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     gap: 0;
-    padding: 70px var(--gutter) 64px;
+    padding: 70px var(--gutter) 96px;
   }
 
   .cena__palco {

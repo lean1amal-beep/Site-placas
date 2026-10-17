@@ -195,6 +195,8 @@ function cena() {
         const etapa = p < 0.14 ? -1 : p < 0.36 ? 0 : p < 0.62 ? 1 : 2;
         if (secao.dataset.etapa !== String(etapa)) secao.dataset.etapa = String(etapa);
         secao.classList.toggle('cena--nfc', p > 0.38 && p < 0.6);
+        // a dica de deslizar some quando a avaliação é publicada
+        secao.classList.toggle('cena--fim', p > 0.86);
       },
     },
   });
