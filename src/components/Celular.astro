@@ -1,0 +1,37 @@
+---
+// Celular desenhado em CSS para a cena do NFC. É ilustração: os textos são genéricos.
+---
+
+<div class="cel" aria-hidden="true">
+  <div class="cel__tela">
+    <div class="cel__ilha"></div>
+    <div class="cel__bloqueio">
+      <span class="cel__hora">9:41</span>
+      <span class="cel__data">quinta-feira, 14 de maio</span>
+    </div>
+    <div class="cel__aviso">
+      <span class="cel__aviso-icone">
+        <svg viewBox="0 0 24 24"><path d="M6 8.5a8 8 0 0 1 12 0M8.5 11.5a4.5 4.5 0 0 1 7 0M11 14.5a1.2 1.2 0 0 1 2 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </span>
+      <span class="cel__aviso-txt"><b>NFC</b>Abrir avaliação</span>
+    </div>
+    <div class="cel__folha">
+      <div class="cel__puxador"></div>
+      <div class="cel__negocio">
+        <span class="cel__avatar">S</span>
+        <span><b>Seu negócio</b><small>Avalie sua experiência</small></span>
+      </div>
+      <div class="cel__estrelas">
+        {Array.from({ length: 5 }, () => (
+          <svg class="cel__estrela" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.1l-5.7 3.2 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>
+        ))}
+      </div>
+      <div class="cel__campo">Conte como foi seu atendimento</div>
+      <div class="cel__botao">Publicar</div>
+      <div class="cel__ok">
+        <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        Avaliação publicada
+      </div>
+    </div>
+  </div>
+</div>

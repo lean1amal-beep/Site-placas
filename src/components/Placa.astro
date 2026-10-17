@@ -1,0 +1,33 @@
+---
+// Placa de acrílico em L feita com transformações 3D de CSS.
+// A arte é o arquivo plano (com o QR trocado por um que abre o WhatsApp).
+interface Props {
+  arte?: 'preta' | 'branca';
+  class?: string;
+  luz?: boolean;
+}
+const { arte = 'preta', class: classe = '', luz = true } = Astro.props;
+---
+
+<div class:list={['placa', classe, { 'placa--luz': luz }]}>
+  <div class="placa__corpo">
+    <div class="placa__folha">
+      <div class="placa__cartao">
+        <img
+          class="placa__arte"
+          src={`/img/placa-${arte}.webp`}
+          alt="Placa de acrílico com o G colorido, a frase Nos avalie no Google, cinco estrelas, um QR code e o símbolo de NFC"
+          width="906"
+          height="1359"
+          decoding="async"
+        />
+        <span class="placa__alvo placa__alvo--qr" aria-hidden="true"></span>
+        <span class="placa__alvo placa__alvo--nfc" aria-hidden="true"></span>
+      </div>
+      <span class="placa__brilho" aria-hidden="true"></span>
+    </div>
+    <span class="placa__borda placa__borda--dir" aria-hidden="true"></span>
+    <span class="placa__borda placa__borda--topo" aria-hidden="true"></span>
+    <span class="placa__pe" aria-hidden="true"></span>
+  </div>
+</div>

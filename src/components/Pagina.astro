@@ -1,0 +1,294 @@
+---
+import Base from '../layouts/Base.astro';
+import Placa from './Placa.astro';
+import Celular from './Celular.astro';
+import {
+  MARCA,
+  WHATSAPP_EXIBICAO,
+  linkWhatsApp,
+  passos,
+  detalhes,
+  precos,
+  type Conteudo,
+} from '../conteudo';
+
+interface Props {
+  c: Conteudo;
+}
+const { c } = Astro.props;
+const wa = linkWhatsApp(c.mensagemWhatsApp);
+const palavras = (t: string) => t.split(' ');
+---
+
+<Base title={c.seo.title} description={c.seo.description}>
+  <header class="nav">
+    <a class="nav__marca" href="#topo" aria-label={MARCA}>
+      <span class="nav__selo" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.1l-5.7 3.2 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>
+      </span>
+      <span>Placa de Avaliação</span>
+    </a>
+    <a class="botao botao--mini" href={wa} target="_blank" rel="noopener">
+      <svg class="ico-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2s.2-1.1.1-1.2-.2-.2-.4-.3z"></path></svg>
+      <span>WhatsApp</span>
+    </a>
+  </header>
+
+  <main id="topo">
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero__aura" aria-hidden="true"></div>
+      <div class="hero__grade">
+        <div class="hero__texto">
+          <h1 id="hero-titulo" class="hero__titulo">
+            {palavras(c.hero.headline).map((p) => <span class="pal">{p} </span>)}
+          </h1>
+          <p class="hero__sub surge">{c.hero.sub}</p>
+          <div class="hero__acoes surge">
+            <a class="botao botao--grande" href={wa} target="_blank" rel="noopener">{c.hero.cta}</a>
+          </div>
+          <p class="hero__meta surge">
+            <span>R$ 100 com design personalizado</span>
+            <span>Pronta em 10 dias úteis</span>
+            <span>Envio para todo o Brasil</span>
+          </p>
+        </div>
+        <div class="hero__palco">
+          <div class="hero__placa-wrap">
+            <Placa class="placa--hero" />
+          </div>
+          <div class="hero__chao" aria-hidden="true"></div>
+        </div>
+      </div>
+      <a class="hero__rolar" href="#como-funciona" aria-label="Ver como funciona"><span></span></a>
+    </section>
+
+    <!-- 2. O problema -->
+    <section class="problema secao" aria-labelledby="problema-titulo">
+      <div class="largura">
+        <p class="rotulo surge-scroll">O problema</p>
+        <h2 id="problema-titulo" class="titulo-grande surge-scroll">{c.problema.titulo}</h2>
+        <p class="problema__texto" data-acende>
+          {palavras(c.problema.texto).map((p) => <span>{p} </span>)}
+        </p>
+        <p class="problema__fecho surge-scroll">
+          <span class="arco-iris-texto">{c.problema.fecho}</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. Como funciona (cena presa no scroll) -->
+    <section id="como-funciona" class="cena" aria-labelledby="cena-titulo">
+      <div class="cena__fixo">
+        <h2 id="cena-titulo" class="cena__titulo">
+          Três segundos entre o cliente e a sua avaliação.
+        </h2>
+        <div class="cena__grade">
+          <ol class="cena__passos">
+            {passos.map((p, i) => (
+              <li class="passo" data-passo={i}>
+                <span class="passo__n">{p.n}</span>
+                <h3 class="passo__titulo">{p.titulo}</h3>
+                <p class="passo__texto">{p.texto}</p>
+                {i === 0 && (
+                  <p class="passo__nota">
+                    Uma minoria da população ainda possui celulares sem a tecnologia NFC, por isso o QR code está incluso na placa.
+                  </p>
+                )}
+              </li>
+            ))}
+          </ol>
+          <div class="cena__palco">
+            <div class="cena__mundo">
+              <Placa class="placa--cena" luz={false} />
+              <div class="cena__ondas" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="cena__cel"><Celular /></div>
+            </div>
+          </div>
+        </div>
+        <div class="cena__progresso" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- 4. O produto -->
+    <section class="produto secao" aria-labelledby="produto-titulo">
+      <div class="largura">
+        <p class="rotulo surge-scroll">O produto</p>
+        <h2 id="produto-titulo" class="titulo-grande surge-scroll">Feita pra ficar no balcão por muito tempo.</h2>
+
+        <div class="bento">
+          <figure class="bento__foto bento__foto--alta surge-scroll">
+            <img src="/img/onfit-close.webp" alt="Placa preta com faixas verdes em uso, vista de perto" loading="lazy" width="900" height="1600" />
+          </figure>
+          {detalhes.map((d, i) => (
+            <article class:list={['cartao surge-scroll', { 'cartao--largo': i === 2 }]}>
+              <span class="cartao__n">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{d.titulo}</h3>
+              <p>{d.texto}</p>
+            </article>
+          ))}
+          <figure class="bento__foto surge-scroll">
+            <img src="/img/padrao-com-pano.webp" alt="Placa branca ao lado de um pano de limpeza" loading="lazy" width="900" height="1600" />
+          </figure>
+        </div>
+
+        <h3 class="subtitulo surge-scroll">Dois formatos.</h3>
+        <div class="formatos">
+          <figure class="formato surge-scroll">
+            <div class="formato__img formato__img--claro">
+              <img src="/img/modelo-padrao-fundo-branco.webp" alt="Display de mesa em acrílico com a arte padrão" loading="lazy" width="928" height="1152" />
+            </div>
+            <figcaption><b>Display de mesa</b>Em pé, pra recepção, mesa ou caixa.</figcaption>
+          </figure>
+          <figure class="formato surge-scroll">
+            <div class="formato__img">
+              <img src="/img/adesivo-10x10-balcao.webp" alt="Adesivo quadrado de 10 por 10 centímetros colado no balcão" loading="lazy" width="1280" height="832" />
+            </div>
+            <figcaption><b>Adesivo 10x10</b>Cola no balcão, na vitrine ou no caixa.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    {c.saude && (
+      <section class="saude secao" aria-labelledby="saude-titulo">
+        <div class="largura">
+          <h2 id="saude-titulo" class="titulo-grande surge-scroll">{c.saude.titulo}</h2>
+          <div class="saude__lista">
+            {c.saude.itens.map((it) => (
+              <article class="cartao surge-scroll">
+                <h3>{it.titulo}</h3>
+                <p>{it.texto}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- 5. Modelos -->
+    <section class="modelos secao" aria-labelledby="modelos-titulo">
+      <div class="largura">
+        <p class="rotulo surge-scroll">Modelos</p>
+        <h2 id="modelos-titulo" class="titulo-grande surge-scroll">Com a sua marca ou pronta pra usar.</h2>
+        <div class="modelos__vitrine">
+          <figure class="modelo surge-scroll">
+            <img src="/img/modelo-onfit-fundo-branco.webp" alt="Placa personalizada da OnFit, preta com faixas verdes" loading="lazy" width="825" height="1024" />
+          </figure>
+          <figure class="modelo modelo--meio surge-scroll">
+            <img src="/img/modelo-padrao-fundo-branco.webp" alt="Placa no modelo padrão, branca com faixas coloridas" loading="lazy" width="928" height="1152" />
+          </figure>
+          <figure class="modelo surge-scroll">
+            <img src="/img/modelo-quintal-do-roque-fundo-branco.webp" alt="Placa personalizada do Quintal do Roque, branca com faixas laranja" loading="lazy" width="928" height="1152" />
+          </figure>
+        </div>
+        <p class="legenda surge-scroll">Placas em uso na OnFit (treinamento personalizado) e no Quintal do Roque.</p>
+        <div class="modelos__tipos">
+          <article class="surge-scroll">
+            <h3>Personalizada</h3>
+            <p>Logo, cores e nome do seu negócio. Inclui uma rodada de ajuste no design.</p>
+          </article>
+          <article class="surge-scroll">
+            <h3>Padrão</h3>
+            <p>Design limpo inspirado no visual do Google. Pra quem quer rapidez.</p>
+          </article>
+        </div>
+        <p class="modelos__preco surge-scroll">Mesmo preço nas duas.</p>
+      </div>
+    </section>
+
+    <!-- Já em uso -->
+    <section class="uso secao" aria-labelledby="uso-titulo">
+      <div class="largura">
+        <p class="rotulo surge-scroll">Já em uso</p>
+        <h2 id="uso-titulo" class="titulo-medio surge-scroll">Fotos reais de placas entregues.</h2>
+      </div>
+      <div class="uso__trilho">
+        <figure><img src="/img/onfit-no-balcao-do-cliente.webp" alt="Placa da OnFit no balcão do cliente" loading="lazy" width="900" height="1600" /></figure>
+        <figure><img src="/img/onfit-e-quintal-lado-a-lado.webp" alt="Placas da OnFit e do Quintal do Roque lado a lado" loading="lazy" width="900" height="1600" /></figure>
+        <figure><img src="/img/referencia-arte-preta-impressa.webp" alt="Placa preta no modelo padrão, impressa" loading="lazy" width="900" height="1600" /></figure>
+      </div>
+    </section>
+
+    <!-- 6. Preços -->
+    <section class="precos secao" aria-labelledby="precos-titulo">
+      <div class="largura">
+        <p class="rotulo surge-scroll">Preços</p>
+        <h2 id="precos-titulo" class="titulo-grande surge-scroll">Um pagamento. A placa trabalha todo dia.</h2>
+        <div class="tabela">
+          {precos.map((p) => (
+            <article class:list={['faixa surge-scroll', { 'faixa--destaque': p.destaque }]}>
+              <p class="faixa__qtd">{p.qtd} <span>{p.unidade}</span></p>
+              <p class="faixa__preco"><small>R$</small>{p.preco}</p>
+              <p class="faixa__por">por placa</p>
+              <p class="faixa__frete">{p.frete}</p>
+            </article>
+          ))}
+        </div>
+        <p class="precos__texto surge-scroll">
+          Tem mais de um ambiente? Uma na recepção, uma no caixa, uma em cada mesa. O design é feito uma vez e vale pra todas as placas.
+        </p>
+        <ul class="precos__garantias surge-scroll">
+          <li>Design personalizado incluso</li>
+          <li>Pronta em 10 dias úteis</li>
+          <li>Envio para todo o Brasil</li>
+          <li>Parou de funcionar? A gente troca sem custo</li>
+        </ul>
+        <div class="surge-scroll">
+          <a class="botao botao--grande" href={wa} target="_blank" rel="noopener">Montar meu pedido no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Perguntas frequentes -->
+    <section class="faq secao" aria-labelledby="faq-titulo">
+      <div class="largura largura--texto">
+        <h2 id="faq-titulo" class="titulo-medio surge-scroll">Perguntas frequentes</h2>
+        <div class="faq__lista">
+          {c.faq.map((f) => (
+            <details class="pergunta surge-scroll">
+              <summary>{f.p}<span class="pergunta__mais" aria-hidden="true"></span></summary>
+              <div class="pergunta__resp"><p>{f.r}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CTA final -->
+    <section class="final" aria-labelledby="final-titulo">
+      <div class="final__aura" aria-hidden="true"></div>
+      <div class="largura largura--texto">
+        <div class="final__estrelas surge-scroll" aria-hidden="true">
+          {Array.from({ length: 5 }, () => (
+            <svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.1l-5.7 3.2 1.2-6.4-4.7-4.4 6.4-.8z"></path></svg>
+          ))}
+        </div>
+        <h2 id="final-titulo" class="titulo-grande surge-scroll">Seus próximos clientes vão ler o Google antes de te conhecer.</h2>
+        <p class="final__texto surge-scroll">Faça com que eles saibam o que seus clientes pensam do seu estabelecimento.</p>
+        <div class="surge-scroll">
+          <a class="botao botao--grande" href={wa} target="_blank" rel="noopener">{c.hero.cta}</a>
+        </div>
+        <p class="final__linha surge-scroll">Atendimento direto pelo WhatsApp. Resposta no mesmo dia.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="largura rodape__grade">
+      <p class="rodape__marca">{MARCA}</p>
+      <p><a href={wa} target="_blank" rel="noopener">WhatsApp {WHATSAPP_EXIBICAO}</a></p>
+      <p>Envio para todo o Brasil</p>
+      <p class="rodape__aviso">Não somos afiliados ao Google.</p>
+    </div>
+  </footer>
+
+  <a class="flutuante" href={wa} target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2s.2-1.1.1-1.2-.2-.2-.4-.3z"></path></svg>
+  </a>
+
+  <script>
+    import { iniciar } from '../scripts/animacoes';
+    iniciar();
+  </script>
+</Base>
