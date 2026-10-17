@@ -58,14 +58,14 @@ export const principal: Conteudo = {
   },
   mensagemWhatsApp: 'Olá, vi a página da placa de avaliação e quero fazer a minha.',
   hero: {
-    headline: 'O jeito mais rápido de ganhar avaliações no Google acabou de chegar ao seu balcão.',
+    headline: 'Seu cliente aproxima o celular. A avaliação no Google abre na hora.',
     sub: 'Uma placa com a tecnologia do NFC e do QR code que leva o cliente direto pra tela de avaliação do seu negócio. Sem precisar procurar ou baixar nada.',
     cta: 'Quero minha placa',
   },
   problema: {
     titulo: 'Cliente satisfeito vai embora sem deixar avaliação.',
     texto:
-      'Quem gostou do atendimento agradece, sorri e vai embora. Quem teve um dia ruim abre o Google e escreve. Pedir "deixa uma avaliação pra gente" não resolve: a pessoa até quer, mas precisa achar o perfil, abrir o comentário, e nesse meio tempo pode acabar se perdendo.',
+      'Quem gostou do atendimento agradece, sorri e vai embora. Quem não teve um atendimento tão legal abre o Google e escreve. Pedir "deixa uma avaliação pra gente" não resolve: a pessoa até quer, mas precisa achar o perfil, abrir o comentário, e nesse meio tempo pode acabar se perdendo.',
     fecho:
       'Essa tecnologia resolve esse problema: o cliente faz a avaliação de forma rápida, apenas encostando o celular.',
   },
@@ -155,9 +155,10 @@ export const detalhes = [
   { titulo: 'Link reconfigurável', texto: 'Mudou o perfil? A gente ajusta na hora.' },
 ];
 
+// Faixas de preço por placa. `min` é a quantidade a partir da qual a faixa vale.
 export const precos = [
-  { qtd: '1 a 2', unidade: 'placas', preco: 100, frete: 'Frete à parte' },
-  { qtd: '3 a 4', unidade: 'placas', preco: 90, frete: 'Frete à parte' },
-  { qtd: '5 a 9', unidade: 'placas', preco: 80, frete: 'Frete à parte' },
-  { qtd: '10 ou mais', unidade: 'placas', preco: 80, frete: 'Frete grátis', destaque: true },
+  { min: 1, qtd: '1 a 2', preco: 100, freteGratis: false },
+  { min: 3, qtd: '3 a 4', preco: 90, freteGratis: false },
+  { min: 5, qtd: '5 a 9', preco: 85, freteGratis: false },
+  { min: 10, qtd: '10 ou mais', preco: 80, freteGratis: true },
 ];

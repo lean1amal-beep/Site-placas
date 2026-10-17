@@ -119,7 +119,7 @@ const palavras = (t: string) => t.split(' ');
 
         <div class="bento">
           <figure class="bento__foto bento__foto--alta surge-scroll">
-            <img src="/img/onfit-close.webp" alt="Placa preta com faixas verdes em uso, vista de perto" loading="lazy" width="900" height="1600" />
+            <img src="/img/hero-onfit-fundo-escuro.webp" alt="Placa da OnFit, preta com faixas verdes, em acrílico sobre fundo escuro" loading="lazy" width="1376" height="768" />
           </figure>
           {detalhes.map((d, i) => (
             <article class:list={['cartao surge-scroll', { 'cartao--largo': i === 2 }]}>
@@ -129,15 +129,15 @@ const palavras = (t: string) => t.split(' ');
             </article>
           ))}
           <figure class="bento__foto surge-scroll">
-            <img src="/img/padrao-com-pano.webp" alt="Placa branca ao lado de um pano de limpeza" loading="lazy" width="900" height="1600" />
+            <img src="/img/hero-placa-preta-fundo-escuro.webp" alt="Placa preta no modelo padrão, em acrílico sobre fundo escuro" loading="lazy" width="1376" height="768" />
           </figure>
         </div>
 
         <h3 class="subtitulo surge-scroll">Dois formatos.</h3>
         <div class="formatos">
           <figure class="formato surge-scroll">
-            <div class="formato__img formato__img--claro">
-              <img src="/img/modelo-padrao-fundo-branco.webp" alt="Display de mesa em acrílico com a arte padrão" loading="lazy" width="928" height="1152" />
+            <div class="formato__img formato__img--display">
+              <img src="/img/hero-placa-branca-fundo-escuro.webp" alt="Display de mesa em acrílico com a arte padrão branca" loading="lazy" width="1376" height="768" />
             </div>
             <figcaption><b>Display de mesa</b>Em pé, pra recepção, mesa ou caixa.</figcaption>
           </figure>
@@ -174,13 +174,13 @@ const palavras = (t: string) => t.split(' ');
         <h2 id="modelos-titulo" class="titulo-grande surge-scroll">Com a sua marca ou pronta pra usar.</h2>
         <div class="modelos__vitrine">
           <figure class="modelo surge-scroll">
-            <img src="/img/modelo-onfit-fundo-branco.webp" alt="Placa personalizada da OnFit, preta com faixas verdes" loading="lazy" width="825" height="1024" />
+            <img src="/img/recorte-onfit.webp" alt="Placa personalizada da OnFit, preta com faixas verdes" loading="lazy" width="520" height="719" />
           </figure>
           <figure class="modelo modelo--meio surge-scroll">
-            <img src="/img/modelo-padrao-fundo-branco.webp" alt="Placa no modelo padrão, branca com faixas coloridas" loading="lazy" width="928" height="1152" />
+            <img src="/img/recorte-padrao.webp" alt="Placa no modelo padrão, branca com faixas coloridas" loading="lazy" width="609" height="802" />
           </figure>
           <figure class="modelo surge-scroll">
-            <img src="/img/modelo-quintal-do-roque-fundo-branco.webp" alt="Placa personalizada do Quintal do Roque, branca com faixas laranja" loading="lazy" width="928" height="1152" />
+            <img src="/img/recorte-quintal.webp" alt="Placa personalizada do Quintal do Roque, branca com faixas laranja" loading="lazy" width="582" height="802" />
           </figure>
         </div>
         <p class="legenda surge-scroll">Placas em uso na OnFit (treinamento personalizado) e no Quintal do Roque.</p>
@@ -205,9 +205,9 @@ const palavras = (t: string) => t.split(' ');
         <h2 id="uso-titulo" class="titulo-medio surge-scroll">Fotos reais de placas entregues.</h2>
       </div>
       <div class="uso__trilho">
-        <figure><img src="/img/onfit-no-balcao-do-cliente.webp" alt="Placa da OnFit no balcão do cliente" loading="lazy" width="900" height="1600" /></figure>
-        <figure><img src="/img/onfit-e-quintal-lado-a-lado.webp" alt="Placas da OnFit e do Quintal do Roque lado a lado" loading="lazy" width="900" height="1600" /></figure>
-        <figure><img src="/img/referencia-arte-preta-impressa.webp" alt="Placa preta no modelo padrão, impressa" loading="lazy" width="900" height="1600" /></figure>
+        <figure><img src="/img/onfit-no-balcao-do-cliente.webp" alt="Placa da OnFit no balcão do cliente" loading="lazy" width="880" height="1100" /></figure>
+        <figure><img src="/img/onfit-e-quintal-lado-a-lado.webp" alt="Placas da OnFit e do Quintal do Roque lado a lado" loading="lazy" width="880" height="1100" /></figure>
+        <figure><img src="/img/referencia-arte-preta-impressa.webp" alt="Placa preta no modelo padrão, impressa" loading="lazy" width="880" height="1100" /></figure>
       </div>
     </section>
 
@@ -216,15 +216,38 @@ const palavras = (t: string) => t.split(' ');
       <div class="largura">
         <p class="rotulo surge-scroll">Preços</p>
         <h2 id="precos-titulo" class="titulo-grande surge-scroll">Um pagamento. A placa trabalha todo dia.</h2>
-        <div class="tabela">
-          {precos.map((p) => (
-            <article class:list={['faixa surge-scroll', { 'faixa--destaque': p.destaque }]}>
-              <p class="faixa__qtd">{p.qtd} <span>{p.unidade}</span></p>
-              <p class="faixa__preco"><small>R$</small>{p.preco}</p>
-              <p class="faixa__por">por placa</p>
-              <p class="faixa__frete">{p.frete}</p>
-            </article>
-          ))}
+        <div class="pedido surge-scroll" data-pedido data-msg={c.mensagemWhatsApp} data-faixas={JSON.stringify(precos)}>
+          <div class="pedido__calc">
+            <p class="pedido__rotulo" id="qtd-rotulo">Quantas placas?</p>
+            <div class="pedido__qtd">
+              <button type="button" class="pedido__btn" data-menos aria-label="Uma placa a menos">−</button>
+              <output class="pedido__num" id="qtd-num" aria-live="polite" aria-labelledby="qtd-rotulo">1</output>
+              <button type="button" class="pedido__btn" data-mais aria-label="Uma placa a mais">+</button>
+            </div>
+            <input class="pedido__barra" id="qtd-barra" type="range" min="1" max="20" value="1" aria-labelledby="qtd-rotulo" />
+            <div class="pedido__resumo">
+              <div>
+                <p class="pedido__chave">Por placa</p>
+                <p class="pedido__valor"><small>R$</small><span data-unit>100</span></p>
+              </div>
+              <div>
+                <p class="pedido__chave">Total</p>
+                <p class="pedido__valor"><small>R$</small><span data-total>100</span></p>
+              </div>
+            </div>
+            <p class="pedido__dica" data-dica>Com 3 placas, cada uma sai por R$ 90.</p>
+            <p class="pedido__frete" data-frete>Frete à parte, combinado no WhatsApp.</p>
+            <a class="botao botao--grande pedido__cta" data-cta href={wa} target="_blank" rel="noopener">Montar meu pedido no WhatsApp</a>
+          </div>
+          <ol class="pedido__faixas">
+            {precos.map((p, i) => (
+              <li class="faixa" data-faixa={i}>
+                <span class="faixa__qtd">{p.qtd} <span>placas</span></span>
+                <span class="faixa__preco"><small>R$</small>{p.preco}</span>
+                <span class="faixa__frete">{p.freteGratis ? 'Frete grátis' : 'Frete à parte'}</span>
+              </li>
+            ))}
+          </ol>
         </div>
         <p class="precos__texto surge-scroll">
           Tem mais de um ambiente? Uma na recepção, uma no caixa, uma em cada mesa. O design é feito uma vez e vale pra todas as placas.
@@ -235,9 +258,6 @@ const palavras = (t: string) => t.split(' ');
           <li>Envio para todo o Brasil</li>
           <li>Parou de funcionar? A gente troca sem custo</li>
         </ul>
-        <div class="surge-scroll">
-          <a class="botao botao--grande" href={wa} target="_blank" rel="noopener">Montar meu pedido no WhatsApp</a>
-        </div>
       </div>
     </section>
 

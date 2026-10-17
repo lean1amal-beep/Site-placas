@@ -13,6 +13,7 @@ export function iniciar() {
   const reduzido = document.documentElement.classList.contains('rm');
 
   navegacao();
+  pedido();
 
   if (reduzido) {
     const cena = $('.cena');
@@ -199,19 +200,14 @@ function cena() {
     },
   });
 
-  // 0 a 1: título grande aparece; placa de lado, no escuro
+  // 0 a 1: a cena já começa com o título e a placa de lado (nada de tela vazia)
   tl.set(passos, { opacity: 1 })
-    .fromTo(titulo, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.6 }, 0)
-    .fromTo(
-      mundo,
-      { opacity: 0, scale: 0.7, yPercent: 10 },
-      { opacity: 0.12, scale: 0.8, yPercent: 6, duration: 0.8 },
-      0,
-    )
-    .fromTo(corpo, { rotateY: 75, rotateX: 18 }, { rotateY: 60, rotateX: 14, duration: 0.8 }, 0)
+    .fromTo(titulo, { opacity: 1, y: 0 }, { opacity: 1, y: 0, duration: 0.6 }, 0)
+    .fromTo(mundo, { scale: 0.7, yPercent: 22 }, { scale: 0.74, yPercent: 20, duration: 0.8 }, 0)
+    .fromTo(corpo, { rotateY: 38, rotateX: 10 }, { rotateY: 30, rotateX: 8, duration: 0.8 }, 0)
     // 1 a 2.4: título sai, placa vira de frente
-    .to(titulo, { opacity: 0, scale: 1.08, filter: 'blur(12px)', duration: 0.7 }, 1)
-    .to(mundo, { opacity: 1, scale: 1, yPercent: 0, duration: 1.4 }, 1)
+    .to(titulo, { opacity: 0, y: -30, filter: 'blur(10px)', duration: 0.7 }, 1)
+    .to(mundo, { scale: 1, yPercent: 0, duration: 1.4 }, 1)
     .to(corpo, { rotateY: -14, rotateX: 6, duration: 1.4 }, 1)
     .fromTo(brilho, { '--brilho': '100%' }, { '--brilho': '0%', duration: 1.4 }, 1)
     // 2.4 a 3.2: destaca QR e NFC
@@ -295,4 +291,69 @@ function final() {
       scrollTrigger: { trigger: '.final__estrelas', start: 'top 85%', once: true },
     },
   );
+}
+
+/* Preços: escolhe a quantidade e vê preço por placa, total e frete */
+function pedido() {
+  const raiz = $('[data-pedido]');
+  if (!raiz) return;
+  type Faixa = { min: number; qtd: string; preco: number; freteGratis: boolean };
+  const faixas: Faixa[] = JSON.parse(raiz.dataset.faixas || '[]');
+  const msg = raiz.dataset.msg || '';
+  const num = $('#qtd-num', raiz)!;
+  const barra = $<HTMLInputElement>('#qtd-barra', raiz)!;
+  const menos = $<HTMLButtonElement>('[data-menos]', raiz)!;
+  const mais = $<HTMLButtonElement>('[data-mais]', raiz)!;
+  const unit = $('[data-unit]', raiz)!;
+  const total = $('[data-total]', raiz)!;
+  const dica = $('[data-dica]', raiz)!;
+  const frete = $('[data-frete]', raiz)!;
+  const cta = $<HTMLAnchorElement>('[data-cta]', raiz)!;
+  const linhas = $$('[data-faixa]', raiz);
+  const max = Number(barra.max);
+  const reais = (v: number) => v.toLocaleString('pt-BR');
+
+  const faixaDe = (q: number) => {
+    let i = 0;
+    faixas.forEach((f, k) => q >= f.min && (i = k));
+    return i;
+  };
+
+  const mostrar = (q: number) => {
+    q = Math.min(max, Math.max(1, q));
+    const i = faixaDe(q);
+    const f = faixas[i];
+    num.textContent = q === max ? `${q}+` : String(q);
+    barra.value = String(q);
+    barra.style.setProperty('--p', `${((q - 1) / (max - 1)) * 100}%`);
+    menos.disabled = q <= 1;
+    mais.disabled = q >= max;
+    unit.textContent = reais(f.preco);
+    total.textContent = reais(f.preco * q);
+    linhas.forEach((l, k) => l.classList.toggle('faixa--ativa', k === i));
+
+    const prox = faixas[i + 1];
+    const economia = (faixas[0].preco - f.preco) * q;
+    if (prox) {
+      const faltam = prox.min - q;
+      dica.innerHTML = `Com mais ${faltam} ${faltam === 1 ? 'placa' : 'placas'}, cada uma sai por <b>R$ ${reais(prox.preco)}</b>${prox.freteGratis ? ' e o frete é grátis' : ''}.`;
+    } else {
+      dica.innerHTML = `Você economiza <b>R$ ${reais(economia)}</b> no total.`;
+    }
+    if (prox && economia > 0) dica.innerHTML = `Economia de <b>R$ ${reais(economia)}</b>. ` + dica.innerHTML;
+
+    frete.textContent = f.freteGratis ? 'Frete grátis para todo o Brasil.' : 'Frete à parte, combinado no WhatsApp.';
+    frete.classList.toggle('pedido__frete--gratis', f.freteGratis);
+
+    const pedidoTxt = q === 1 ? 'Quero 1 placa.' : q >= max ? `Quero ${max} placas ou mais.` : `Quero ${q} placas.`;
+    cta.href = cta.href.replace(/\?text=.*$/, '?text=' + encodeURIComponent(`${msg} ${pedidoTxt}`));
+  };
+
+  menos.addEventListener('click', () => mostrar(Number(barra.value) - 1));
+  mais.addEventListener('click', () => mostrar(Number(barra.value) + 1));
+  barra.addEventListener('input', () => mostrar(Number(barra.value)));
+  linhas.forEach((l, k) => {
+    l.addEventListener('click', () => mostrar(faixas[k].min));
+  });
+  mostrar(1);
 }
